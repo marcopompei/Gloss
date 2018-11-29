@@ -74,14 +74,16 @@ class DecoderTests: XCTestCase {
     
     func testInitializingFailableObjectsWithBadDataCanFail() {
         let result = TestFailableModel(json: testFailableModelJSONInvalid!)
+        let val: Any = result ?? "nil"
         
-        XCTAssertTrue(result == nil, "Expected initialization with bad data to fail, instead got \(result)")
+        XCTAssertTrue(result == nil, "Expected initialization with bad data to fail, instead got \(val)")
     }
     
     func testInitializingFailableObjectsWithValidDataCanSucceed() {
         let result = TestFailableModel(json: testFailableModelJSONValid!)
+        let val: Any = result ?? "nil"
         
-        XCTAssertTrue(result != nil, "Expected initialization with valid data to succeed, instead got \(result)")
+        XCTAssertTrue(result != nil, "Expected initialization with valid data to succeed, instead got \(val)")
     }
     
     func testInvalidValue() {
